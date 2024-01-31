@@ -1,0 +1,1 @@
+How can i have users enter their city and country and get the weather information for that when the api only takes lat lon, and the other api takes city info but only returns that info?
