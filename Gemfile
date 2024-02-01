@@ -28,6 +28,9 @@ gem "jbuilder"
 
 gem "activerecord"
 
+gem 'json', '~> 2.7', '>= 2.7.1'
+
+
 
 
 # Use Redis adapter to run Action Cable in production
