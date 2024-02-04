@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_30_234708) do
+ActiveRecord::Schema[7.1].define(version: 2024_02_02_013812) do
+  create_table "forecasts", force: :cascade do |t|
+    t.integer "location_id"
+    t.date "date"
+    t.integer "high_temp"
+    t.integer "low_temp"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["location_id"], name: "index_forecasts_on_location_id"
+  end
+
   create_table "locations", force: :cascade do |t|
     t.string "name"
     t.float "latitude"
@@ -21,10 +31,11 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_30_234708) do
 
   create_table "weathers", force: :cascade do |t|
     t.integer "location_id"
-    t.float "termperature"
+    t.float "temperature"
     t.string "conditions"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "forecasts", "locations"
 end
