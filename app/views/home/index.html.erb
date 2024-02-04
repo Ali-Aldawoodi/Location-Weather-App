@@ -2,11 +2,18 @@
 <p>Find me in app/views/home/index.html.erb</p>
 
 
-<%= @output['current'] %>  
+<%= @output2['current'] %>  
 
-<%= @output['daily']  %> 
+<%= @output2['daily']  %> 
 
-<%= @output['latitude'] %> 
- <%= @output['longitude'] %> 
+<%= @output2['latitude'] %> 
 
+ <%= @output2['longitude'] %> 
+
+
+<%= form_with url: "/", method: :get do |form| %>
+  <%= form.label :query, "Search for:" %>
+  <%= form.text_field :query %>
+  <%= form.submit "Search" %>
+<% end %>
 
