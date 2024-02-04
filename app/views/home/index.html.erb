@@ -11,9 +11,18 @@
  <%= @output2['longitude'] %> 
 
 
+
+
 <%= form_with url: "/", method: :get do |form| %>
   <%= form.label :query, "Search for:" %>
   <%= form.text_field :query %>
   <%= form.submit "Search" %>
 <% end %>
+
+<% if params[:query].present? %>
+    <p>City Name: <%=@city_name%></p>
+    <p>Current Temperature: <%= @current_temp%></p>
+  
+    <% end %>
+
 
