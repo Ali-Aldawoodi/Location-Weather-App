@@ -20,11 +20,14 @@ class HomeController < ApplicationController
 
     #Uses the above latitude and longitude and plugs in to this api in order to find weather for the entered city. Extracts the time and weather information
     def fetch_weather(latitude, longitude)
-      uri = URI("https://api.open-meteo.com/v1/forecast?latitude=#{latitude}&longitude=#{longitude}&current=temperature_2m&daily=temperature_2m_max,temperature_2m_min&temperature_unit=fahrenheit&wind_speed_unit=mph&precipitation_unit=inch&timezone=America%2FDenver")
+      uri = URI("https://api.open-meteo.com/v1/forecast?latitude=#{latitude}&longitude=#{longitude}&current=temperature_2m,apparent_temperature,precipitation,wind_speed_10m&daily=temperature_2m_max,temperature_2m_min&temperature_unit=fahrenheit&wind_speed_unit=mph&precipitation_unit=inch&timezone=America%2FDenver")
+      
 
       res = Net::HTTP.get_response(uri)
       @weather_data = JSON.parse(res.body)
       @current_temp = @weather_data['current']['temperature_2m']
+      @current_precip = @weather_data['current']['precipitation']
+      @current_wind_speed = @weather_data['current']['wind_speed_10m']
 
       daily_data = @weather_data['daily']
       @time = daily_data['time']
