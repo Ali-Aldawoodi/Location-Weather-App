@@ -1,18 +1,6 @@
 <h1>Multi-Location Weather Finder</h1>
 <p>Find me in app/views/home/index.html.erb</p>
 
-
-<%= @output2['current'] %>  
-
-<%= @output2['daily']  %> 
-
-<%= @output2['latitude'] %> 
-
- <%= @output2['longitude'] %> 
-
-
-
-
 <%= form_with url: "/", method: :get do |form| %>
   <%= form.label :query, "Search for:" %>
   <%= form.text_field :query %>
@@ -22,7 +10,12 @@
 <% if params[:query].present? %>
     <p>City Name: <%=@city_name%></p>
     <p>Current Temperature: <%= @current_temp%></p>
-  
+
+    <br>
+
+    <% @orders.each do |index, each| %>
+    <p> <%= index %> <%= each %> </p> 
+    <% end %>
     <% end %>
 
 
