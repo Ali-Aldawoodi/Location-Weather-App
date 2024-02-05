@@ -3,6 +3,7 @@ class HomeController < ApplicationController
     require 'net/http'
     require 'json'
 
+    # finds city name from user input in views file. extracts the name, latitude, and longitude from the api
     def find_city(name)
       uri = URI("https://geocoding-api.open-meteo.com/v1/search?name=#{URI.encode_www_form_component(name)}&count=1&language=en&format=json")  
 
@@ -17,7 +18,7 @@ class HomeController < ApplicationController
         [latitude, longitude]
     end
 
-
+    #Uses the above latitude and longitude and plugs in to this api in order to find weather for the entered city. Extracts the time and weather information
     def fetch_weather(latitude, longitude)
       uri = URI("https://api.open-meteo.com/v1/forecast?latitude=#{latitude}&longitude=#{longitude}&current=temperature_2m&daily=temperature_2m_max,temperature_2m_min&temperature_unit=fahrenheit&wind_speed_unit=mph&precipitation_unit=inch&timezone=America%2FDenver")
 
@@ -35,12 +36,12 @@ class HomeController < ApplicationController
         @time.each_with_index do |time, index|
           min_temp = @min_temp[index]
           max_temp = @max_temp[index]
-          current_temp = ((min_temp + max_temp) / 2.0).round()
+          current_temp = ((min_temp + max_temp) / 2.0).round(1)
           order = "Date: #{time}, Max Temperature:#{max_temp} Min Temperature:#{min_temp}, Current Temperature: #{current_temp}"
           @orders << order
     end
      
-
+    # hash below creates a variable with a hash of the daily info. This is then plugged in to the main method to find the current temperature.
       @daily_forecast = {
         'time' => daily_data['time'],
         'temperature_2m-max' => daily_data['temperature_2m_max'].map {|day_data| day_data},
@@ -49,13 +50,7 @@ class HomeController < ApplicationController
       }
         [@current_temp, @daily_forecast]
     end
-
-    # @url = 'https://api.open-meteo.com/v1/forecast?latitude=39.739235&longitude=-104.990250&current=temperature_2m&hourly=&daily=temperature_2m_max,temperature_2m_min&temperature_unit=fahrenheit&wind_speed_unit=mph&precipitation_unit=inch&timezone=America%2FDenver'
-    # @uri = URI(@url)
-    # @response = Net::HTTP.get(@uri)
-    # @output2 = JSON.parse(@response)
-
-    
+   
     def main
       if params[:query].present?
         latitude, longitude = find_city(params[:query])

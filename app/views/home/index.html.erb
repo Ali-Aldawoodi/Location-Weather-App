@@ -1,21 +1,25 @@
 <h1>Multi-Location Weather Finder</h1>
 <p>Find me in app/views/home/index.html.erb</p>
-
+<%# form to send the user input to the home page %>
 <%= form_with url: "/", method: :get do |form| %>
   <%= form.label :query, "Search for:" %>
   <%= form.text_field :query %>
   <%= form.submit "Search" %>
 <% end %>
 
+<%# Conditional that checks if the user has input anything and if so, display that city and its current temperature %>
 <% if params[:query].present? %>
     <p>City Name: <%=@city_name%></p>
     <p>Current Temperature: <%= @current_temp%></p>
 
     <br>
-
-    <% @orders.each do |index, each| %>
-    <p> <%= index %> <%= each %> </p> 
+<%# Iterates and displays over all the orders %>
+<ol>
+    <% @orders.each do |each| %>
+    <li>
+    <p>  <%= each %> </p> 
+    </li>
     <% end %>
     <% end %>
-
+</ol>
 
