@@ -1,5 +1,6 @@
 class Location < ApplicationRecord
-    has_many :forecasts, class_name: 'Forecast'
-
-    validates :name, presence: true
+    attribute :city_name, :string
+    attribute :max_temperature, :float
+    attribute :min_temperature, :float
+    attribute :current_temperature, :float
 end
