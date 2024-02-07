@@ -41,7 +41,7 @@ Install ActiveRecord and JSON.
 
 | Parameter                 | Type     | Description                |
 | :--------                 | :------- | :------------------------- |
-| `latitude & longitude'    | `string` | Retrieves city             |
+| `latitude & longitude`    | `string` | Retrieves city             |
 
 
 
