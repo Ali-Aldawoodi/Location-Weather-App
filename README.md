@@ -39,9 +39,9 @@ Install ActiveRecord and JSON.
   GET "https://geocoding-api.open-meteo.com/v1/search?name=Berlin&count=1&language=en&format=json"
 ```
 
-| Parameter                     | Type     | Description                |
-| :--------                     | :------- | :------------------------- |
-| `"latitude" & "longitude"'    | `string` | Retrieves city             |
+| Parameter                 | Type     | Description                |
+| :--------                 | :------- | :------------------------- |
+| `latitude & longitude'    | `string` | Retrieves city             |
 
 
 
