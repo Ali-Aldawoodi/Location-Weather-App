@@ -1,5 +1,5 @@
-<h1>Multi-Location Weather Finder</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<h1 class="page-title">Multi-Location Weather Finder</h1>
+<p>Enter your city: </p>
 <%# form to send the user input to the home page %>
 <%= form_with url: "/", method: :get do |form| %>
   <%= form.label :query, "Search for:" %>
@@ -11,6 +11,8 @@
 <% if params[:query].present? %>
     <p>City Name: <%=@city_name%></p>
     <p>Current Temperature: <%= @current_temp%></p>
+    <p>Current Precipitation: <%= @current_precip%></p>
+    <p>Current Wind Speed: <%= @current_wind_speed%></p>
 
     <br>
 <%# Iterates and displays over all the orders %>

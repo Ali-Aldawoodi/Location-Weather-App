@@ -45,13 +45,13 @@ class HomeController < ApplicationController
     end
      
     # hash below creates a variable with a hash of the daily info. This is then plugged in to the main method to find the current temperature.
-      @daily_forecast = {
-        'time' => daily_data['time'],
-        'temperature_2m-max' => daily_data['temperature_2m_max'].map {|day_data| day_data},
-        'temperature_2m_min' => daily_data['temperature_2m_min'].map {|day_data| day_data}
+      # @daily_forecast = {
+      #   'time' => daily_data['time'],
+      #   'temperature_2m-max' => daily_data['temperature_2m_max'].map {|day_data| day_data},
+      #   'temperature_2m_min' => daily_data['temperature_2m_min'].map {|day_data| day_data}
 
-      }
-        [@current_temp, @daily_forecast]
+      # }
+      #   [@current_temp, @daily_forecast]
     end
    
     def main

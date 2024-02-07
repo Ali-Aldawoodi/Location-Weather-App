@@ -14,4 +14,14 @@
  *= require_self
  */
 
+ * {
+    background-color: lightgreen;
+ }
+
+ .page-title {
+    color: yellow;
+ }
+
+ 
+
  
